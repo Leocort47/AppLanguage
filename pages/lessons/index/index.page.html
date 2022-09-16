@@ -1,0 +1,56 @@
+<ion-content>
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('languages/index', undefined)" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('dictionary/index', undefined)" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('notification/index', undefined)"  src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="topContent">
+        <div class="languageView">
+          <img class="roundImgB" src="{{language.image}}" width="100px" height="100px">
+            <h1><b>{{language.name != undefined ? language.name['en'] : ''}}</b></h1>
+        </div>
+        <h3 class="title">Lessons</h3>
+        <div class="add" (click)="navigate('lessons/add', language.id)">
+          <h5>Add Lesson</h5>
+          <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+        </div>
+      </div>
+      <ion-list *ngFor="let lesson of lessons">
+        <div class="card">
+          <div>
+            <h3>{{lesson.title['en']}}</h3>
+          </div>
+          <div>
+            <img (click)="navigate('lessons/view', language.id)" class="iconBtn" src="../../../../assets/icon/eye.svg" alt="" width="30" height="30">
+            <img (click)="navigate('lessons/add', -lesson.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="delete(lesson, true)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+          </div>
+        </div>
+      </ion-list>
+      <div class="topContent">
+        <h3 class="title">Tests</h3>
+        <div class="add" (click)="navigate('tests/add', language.id)">
+          <h5>Add Test</h5>
+          <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+        </div>
+      </div>
+      <ion-list *ngFor="let test of tests">
+        <div class="card">
+          <div>
+            <h3>{{test.title['en']}}</h3>
+          </div>
+          <div>
+            <img (click)="navigate('tests/view', test.id)" class="iconBtn" src="../../../../assets/icon/eye.svg" alt="" width="30" height="30">
+            <img (click)="navigate('tests/add', -test.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="delete(test, false)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
